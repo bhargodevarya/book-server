@@ -7,11 +7,11 @@ const Book = require("../model/Book");
 const conn = mongoose.connect('mongodb://localhost/book', {useNewUrlParser: true});
 
 const fiveAmClub = new Book({
-    name: "5 AM Club",
-    author: "Robin Sharma",
-    image: "https://book-app-images.s3.amazonaws.com/5AMClub.jpg",
-    description: "Morning routing book",
-    category: ["lifestyle", 'self-help'],
+    name: "Savarkar: Echoes from a Forgotten Past",
+    author: "Vikram Sampath",
+    image: "https://book-app-images.s3.amazonaws.com/savarkarBook.jpg",
+    description: "Biography of veer Savarkar",
+    category: ["history", 'biography']
   })
 
 fiveAmClub.save(function(err, bookSaved){
