@@ -4,20 +4,21 @@
 const mongoose = require('mongoose');
 const Book = require("../model/Book");
 
-mongoose.connect('mongodb://localhost/book', {useNewUrlParser: true});
+const conn = mongoose.connect('mongodb://localhost/book', {useNewUrlParser: true});
 
-const myBook = new Book({
-  name: "book1",
-  author: "Amar Dev",
-  image: "url",
-  description: "This is a dummy desc",
-  category: ["fiction"],
-})
+const fiveAmClub = new Book({
+    name: "5 AM Club",
+    author: "Robin Sharma",
+    image: "https://book-app-images.s3.amazonaws.com/5AMClub.jpg",
+    description: "Morning routing book",
+    category: ["lifestyle", 'self-help'],
+  })
 
-myBook.save(function(err, bookSaved){
+fiveAmClub.save(function(err, bookSaved){
     if (err) {
         console.log(err)
     } else  {
         console.log(bookSaved._id)
+        mongoose.connection.close()
     }
 });
