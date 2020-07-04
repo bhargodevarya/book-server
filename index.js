@@ -1,7 +1,7 @@
 const express = require('express')
 const server = express()
 
-const PORT = process.env.BOOK_SERVER_PORT | 4001;
+const PORT = require('./util/Constants').PORT
 
 server.get('/health', (req, res) => {
     res.json({status: "Up"})
