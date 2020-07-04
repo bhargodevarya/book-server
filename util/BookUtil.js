@@ -1,12 +1,11 @@
-//connect to Mongo and create books in Book collection
-//This will be a cmd line utility when I cant access the UI
-
 const mongoose = require("mongoose");
 const Book = require("../model/Book");
+const Metadata = require('../util/Constants')
+const MONGO_URI = Metadata.DB_URL
+const MONGO_OPTIONS = Metadata.MONGO_OPTIONS
 
-const conn = mongoose.connect("mongodb://localhost/book", {
-  useNewUrlParser: true,
-});
+console.log(MONGO_URI)
+const conn = mongoose.connect(MONGO_URI, MONGO_OPTIONS);
 
 // const fiveAmClub = new Book({
 //     name: "Savarkar: Echoes from a Forgotten Past",
@@ -25,7 +24,18 @@ const conn = mongoose.connect("mongodb://localhost/book", {
 //     }
 // });
 
-Book.findOne({  "author" : "Vikram Sampath" }, 
+// Book.findOne({  "author" : "Vikram Sampath" }, 
+// function (err, res) {
+//     if (err) {
+//         console.log(err)
+//     } else {
+//         console.log(res)
+//     }
+//     mongoose.connection.close()
+// }
+// );
+
+Book.find({}, 
 function (err, res) {
     if (err) {
         console.log(err)
